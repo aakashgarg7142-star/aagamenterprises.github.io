@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Aagam Enterprises</title>
 
-<!-- Premium Font -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -25,7 +24,6 @@ body{
     box-shadow:2px 0 10px rgba(0,0,0,0.05);
 }
 
-/* Premium Brand Title */
 .sidebar h1{
     font-family: 'Cinzel', serif;
     font-size:30px;
@@ -36,7 +34,6 @@ body{
     margin-bottom:40px;
 }
 
-/* Sidebar Links */
 .sidebar a{
     display:block;
     padding:8px 0;
@@ -57,22 +54,23 @@ body{
     padding:50px;
 }
 
-/* Premium Main Heading */
+/* Section Style */
+.section{
+    display:none;
+}
+
+.active{
+    display:block;
+}
+
+/* Headings */
 .content h2{
     font-family: 'Cinzel', serif;
     font-size:44px;
     font-weight:700;
     color:#D4AF37;
     letter-spacing:2px;
-    margin-bottom:15px;
-}
-
-/* Gold Small Description */
-.content p{
-    font-size:14px;
-    color:#C9A227;
-    max-width:800px;
-    margin-bottom:40px;
+    margin-bottom:20px;
 }
 
 /* Products */
@@ -106,23 +104,22 @@ body{
     font-weight:bold;
     margin-top:8px;
 }
+
+/* Contact & Address Big Layout */
+.big-section{
+    font-size:20px;
+    line-height:2;
+}
 </style>
 
 <script>
-function filterCategory(category){
-    let products = document.querySelectorAll(".product");
-
-    products.forEach(function(product){
-        if(category === "all"){
-            product.style.display="block";
-        } else {
-            if(product.getAttribute("data-category") === category){
-                product.style.display="block";
-            } else {
-                product.style.display="none";
-            }
-        }
+function showSection(sectionId){
+    let sections = document.querySelectorAll(".section");
+    sections.forEach(function(sec){
+        sec.classList.remove("active");
     });
+
+    document.getElementById(sectionId).classList.add("active");
 }
 </script>
 
@@ -133,104 +130,64 @@ function filterCategory(category){
 <div class="sidebar">
     <h1>AAGAM <br> ENTERPRISES</h1>
 
-    <a onclick="filterCategory('all')">Home</a>
-    <a onclick="filterCategory('business')">Business Card</a>
-    <a onclick="filterCategory('billbook')">Bill Book</a>
-    <a onclick="filterCategory('letterhead')">Letterheads</a>
-    <a onclick="filterCategory('envelope')">Envelope</a>
-    <a onclick="filterCategory('brochure')">Brochures</a>
-    <a onclick="filterCategory('sticker')">Sticker / Label</a>
-    <a onclick="filterCategory('idcard')">ID Card</a>
-    <a onclick="filterCategory('flex')">Flex / Banner</a>
-    <a onclick="filterCategory('vinyl')">Vinyl</a>
-    <a onclick="filterCategory('pamphlet')">Pamphlet</a>
-    <a onclick="filterCategory('wedding')">Wedding Cards</a>
-    <a onclick="filterCategory('etc')">Etc.</a>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('products')">Products</a>
+    <a onclick="showSection('contact')">Contact Us</a>
+    <a onclick="showSection('address')">Address</a>
 </div>
 
 <div class="content">
-    <h2>Welcome to Aagam Enterprises</h2>
-    <p>
-    We provide total printing solutions including business cards, bill books, brochures,
-    wedding cards, vinyl printing, flex banners and customized print materials with
-    professional finishing and trusted service.
-    </p>
 
-    <div class="products">
-
-        <div class="product" data-category="business">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Business Card</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="billbook">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Bill Book</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="letterhead">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Letterhead</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="envelope">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Envelope</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="brochure">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Brochure</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="sticker">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Sticker / Label</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="idcard">
-            <img src="https://via.placeholder.com/220x130">
-            <div>ID Card</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="flex">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Flex / Banner</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="vinyl">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Vinyl Printing</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="pamphlet">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Pamphlet</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="wedding">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Wedding Cards</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
-        <div class="product" data-category="etc">
-            <img src="https://via.placeholder.com/220x130">
-            <div>Other Printing Services</div>
-            <div class="price">₹ XXX</div>
-        </div>
-
+    <!-- HOME -->
+    <div id="home" class="section active">
+        <h2>Welcome to Aagam Enterprises</h2>
+        <p style="color:#C9A227;">
+        We provide total printing solutions including business cards, bill books, brochures,
+        wedding cards, vinyl printing, flex banners and customized print materials with
+        professional finishing and trusted service.
+        </p>
     </div>
+
+    <!-- PRODUCTS -->
+    <div id="products" class="section">
+        <h2>Our Products</h2>
+        <div class="products">
+
+            <div class="product">
+                <img src="https://via.placeholder.com/220x130">
+                <div>Wedding Cards</div>
+                <div class="price">₹ XXX</div>
+            </div>
+
+            <div class="product">
+                <img src="https://via.placeholder.com/220x130">
+                <div>Business Card</div>
+                <div class="price">₹ XXX</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <div class="big-section">
+            <strong>Name:</strong> Adarrsh I Rawat <br>
+            <strong>Phone:</strong> 99132 27959 <br>
+            <strong>Email:</strong> adarrshirawat@gmail.com
+        </div>
+    </div>
+
+    <!-- ADDRESS -->
+    <div id="address" class="section">
+        <h2>Our Address</h2>
+        <div class="big-section">
+            Shop No. 6, Validain Plaza, <br>
+            Silvassa Road, Imran Nagar, <br>
+            Vapi - 396191
+        </div>
+    </div>
+
 </div>
 
 </body>
