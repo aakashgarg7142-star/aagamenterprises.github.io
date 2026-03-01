@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Aagam Enterprises</title>
 
+<!-- Premium Font -->
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -18,20 +19,24 @@ body{
     position:fixed;
     width:250px;
     height:100%;
-    background:#f5f5f5;
-    padding:25px;
+    background:#f8f8f8;
+    padding:30px 20px;
     overflow-y:auto;
-    box-shadow:2px 0 5px rgba(0,0,0,0.1);
+    box-shadow:2px 0 10px rgba(0,0,0,0.05);
 }
 
+/* Premium Brand Title */
 .sidebar h1{
-    font-family:'Cinzel', serif;
-    font-size:32px;
+    font-family: 'Cinzel', serif;
+    font-size:30px;
+    font-weight:600;
     letter-spacing:4px;
     color:#D4AF37;
     line-height:1.6;
+    margin-bottom:40px;
 }
 
+/* Sidebar Links */
 .sidebar a{
     display:block;
     padding:8px 0;
@@ -39,6 +44,7 @@ body{
     color:#000;
     font-weight:bold;
     cursor:pointer;
+    transition:0.3s;
 }
 
 .sidebar a:hover{
@@ -48,37 +54,32 @@ body{
 /* Content */
 .content{
     margin-left:270px;
-    padding:40px;
+    padding:50px;
 }
 
-/* Hide Sections */
-.section{
-    display:none;
-}
-
-/* Show Active */
-.active{
-    display:block;
-}
-
-/* Welcome Heading */
-.welcome h2{
-    font-family:'Cinzel', serif;
-    font-size:50px;
+/* Premium Main Heading */
+.content h2{
+    font-family: 'Cinzel', serif;
+    font-size:44px;
+    font-weight:700;
     color:#D4AF37;
-    letter-spacing:3px;
+    letter-spacing:2px;
+    margin-bottom:15px;
 }
 
-.welcome p{
+/* Gold Small Description */
+.content p{
+    font-size:14px;
     color:#C9A227;
-    font-size:16px;
+    max-width:800px;
+    margin-bottom:40px;
 }
 
 /* Products */
 .products{
     display:flex;
     flex-wrap:wrap;
-    gap:20px;
+    gap:25px;
 }
 
 .product{
@@ -86,6 +87,12 @@ body{
     border:1px solid #eee;
     padding:15px;
     text-align:center;
+    transition:0.3s;
+    background:#fff;
+}
+
+.product:hover{
+    box-shadow:0 6px 15px rgba(0,0,0,0.1);
 }
 
 .product img{
@@ -95,28 +102,27 @@ body{
     background:#ddd;
 }
 
-/* Big Section (Contact & Address) */
-.big-title{
-    font-family:'Cinzel', serif;
-    font-size:60px;
-    color:#D4AF37;
-    margin-bottom:30px;
-}
-
-.big-content{
-    font-size:28px;
-    line-height:1.8;
+.price{
+    font-weight:bold;
+    margin-top:8px;
 }
 </style>
 
 <script>
-function showSection(id){
-    let sections = document.querySelectorAll(".section");
-    sections.forEach(function(sec){
-        sec.classList.remove("active");
-    });
+function filterCategory(category){
+    let products = document.querySelectorAll(".product");
 
-    document.getElementById(id).classList.add("active");
+    products.forEach(function(product){
+        if(category === "all"){
+            product.style.display="block";
+        } else {
+            if(product.getAttribute("data-category") === category){
+                product.style.display="block";
+            } else {
+                product.style.display="none";
+            }
+        }
+    });
 }
 </script>
 
@@ -127,66 +133,104 @@ function showSection(id){
 <div class="sidebar">
     <h1>AAGAM <br> ENTERPRISES</h1>
 
-    <a onclick="showSection('home')">Home</a>
-    <a onclick="showSection('business')">Business Card</a>
-    <a onclick="showSection('billbook')">Bill Book</a>
-    <a onclick="showSection('letterhead')">Letterheads</a>
-    <a onclick="showSection('envelope')">Envelope</a>
-    <a onclick="showSection('brochure')">Brochures</a>
-    <a onclick="showSection('sticker')">Sticker / Label</a>
-    <a onclick="showSection('idcard')">ID Card</a>
-    <a onclick="showSection('flex')">Flex / Banner</a>
-    <a onclick="showSection('vinyl')">Vinyl</a>
-    <a onclick="showSection('pamphlet')">Pamphlet</a>
-    <a onclick="showSection('wedding')">Wedding Cards</a>
-    <a onclick="showSection('contact')">Contact Us</a>
-    <a onclick="showSection('address')">Address</a>
+    <a onclick="filterCategory('all')">Home</a>
+    <a onclick="filterCategory('business')">Business Card</a>
+    <a onclick="filterCategory('billbook')">Bill Book</a>
+    <a onclick="filterCategory('letterhead')">Letterheads</a>
+    <a onclick="filterCategory('envelope')">Envelope</a>
+    <a onclick="filterCategory('brochure')">Brochures</a>
+    <a onclick="filterCategory('sticker')">Sticker / Label</a>
+    <a onclick="filterCategory('idcard')">ID Card</a>
+    <a onclick="filterCategory('flex')">Flex / Banner</a>
+    <a onclick="filterCategory('vinyl')">Vinyl</a>
+    <a onclick="filterCategory('pamphlet')">Pamphlet</a>
+    <a onclick="filterCategory('wedding')">Wedding Cards</a>
+    <a onclick="filterCategory('etc')">Etc.</a>
 </div>
 
 <div class="content">
-
-<!-- HOME -->
-<div id="home" class="section active welcome">
-    <h2>WELCOME TO AAGAM ENTERPRISES</h2>
+    <h2>Welcome to Aagam Enterprises</h2>
     <p>
     We provide total printing solutions including business cards, bill books, brochures,
     wedding cards, vinyl printing, flex banners and customized print materials with
     professional finishing and trusted service.
     </p>
-</div>
 
-<!-- PRODUCTS (example one, you can duplicate for others same as before) -->
-
-<div id="wedding" class="section">
     <div class="products">
-        <div class="product">
+
+        <div class="product" data-category="business">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Business Card</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="billbook">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Bill Book</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="letterhead">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Letterhead</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="envelope">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Envelope</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="brochure">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Brochure</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="sticker">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Sticker / Label</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="idcard">
+            <img src="https://via.placeholder.com/220x130">
+            <div>ID Card</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="flex">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Flex / Banner</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="vinyl">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Vinyl Printing</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="pamphlet">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Pamphlet</div>
+            <div class="price">₹ XXX</div>
+        </div>
+
+        <div class="product" data-category="wedding">
             <img src="https://via.placeholder.com/220x130">
             <div>Wedding Cards</div>
-            <div><strong>₹ XXX</strong></div>
+            <div class="price">₹ XXX</div>
         </div>
-    </div>
-</div>
 
-<!-- CONTACT SECTION -->
-<div id="contact" class="section">
-    <div class="big-title">CONTACT US</div>
-    <div class="big-content">
-        ADARRSH I RAWAT <br><br>
-        99132 27959 <br><br>
-        adarrshirawat@gmail.com
-    </div>
-</div>
+        <div class="product" data-category="etc">
+            <img src="https://via.placeholder.com/220x130">
+            <div>Other Printing Services</div>
+            <div class="price">₹ XXX</div>
+        </div>
 
-<!-- ADDRESS SECTION -->
-<div id="address" class="section">
-    <div class="big-title">OUR ADDRESS</div>
-    <div class="big-content">
-        Shop No. 6, Validain Plaza, <br><br>
-        Silvassa Road, Imran Nagar, <br><br>
-        Vapi - 396191
     </div>
-</div>
-
 </div>
 
 </body>
